@@ -13,13 +13,15 @@ class TestDockerHost(UptimeKumaTestCase):
         expected_docker_host = {
             "name": "name 1",
             "dockerType": DockerType.SOCKET,
-            "dockerDaemon": "/var/run/docker.sock"
+            "dockerDaemon": "/var/run/docker.sock",
         }
 
         # test docker host
         if parse_version(self.api.version) != parse_version("1.23.0"):
             # test_docker_host does not work in 1.23.0 (https://github.com/louislam/uptime-kuma/issues/3605)
-            with self.assertRaisesRegex(UptimeKumaException, r'connect ENOENT /var/run/docker.sock'):
+            with self.assertRaisesRegex(
+                UptimeKumaException, r"connect ENOENT /var/run/docker.sock"
+            ):
                 self.api.test_docker_host(**expected_docker_host)
 
         # add docker host
@@ -56,5 +58,5 @@ class TestDockerHost(UptimeKumaTestCase):
             self.api.delete_docker_host(42)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

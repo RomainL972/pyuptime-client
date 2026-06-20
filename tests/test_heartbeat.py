@@ -16,5 +16,5 @@ class TestHeartbeat(UptimeKumaTestCase):
         self.assertTrue(type(list(r.values())[0][0]["status"]) == MonitorStatus)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

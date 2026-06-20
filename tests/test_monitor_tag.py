@@ -12,7 +12,7 @@ class TestMonitorTag(UptimeKumaTestCase):
         expected_monitor_tag = {
             "tag_id": tag_id,
             "monitor_id": monitor_id,
-            "value": "value 1"
+            "value": "value 1",
         }
 
         # add monitor tag
@@ -38,5 +38,5 @@ class TestMonitorTag(UptimeKumaTestCase):
             self.api.delete_monitor_tag(42, 42, 42)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

@@ -27,5 +27,5 @@ class TestLogin(UptimeKumaTestCase):
         self.assertFalse(r["disableAuth"])
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

@@ -25,17 +25,9 @@ class TestStatusPage(UptimeKumaTestCase):
             "showPoweredBy": False,
             "icon": "/icon.svg",
             "publicGroupList": [
-                {
-                    'name': 'Services',
-                    'weight': 1,
-                    'monitorList': [
-                        {
-                            "id": monitor_id
-                        }
-                    ]
-                }
+                {"name": "Services", "weight": 1, "monitorList": [{"id": monitor_id}]}
             ],
-            "googleAnalyticsId": ""
+            "googleAnalyticsId": "",
         }
 
         # add status page
@@ -54,7 +46,11 @@ class TestStatusPage(UptimeKumaTestCase):
         status_page = self.find_by_id(status_pages, slug, "slug")
         self.assertIsNotNone(status_page)
         # publicGroupList and incident is not available in status pages
-        expected_status_page_config = {i: expected_status_page[i] for i in expected_status_page if i != "publicGroupList"}
+        expected_status_page_config = {
+            i: expected_status_page[i]
+            for i in expected_status_page
+            if i != "publicGroupList"
+        }
         self.compare(status_page, expected_status_page_config)
 
         # edit status page
@@ -68,7 +64,7 @@ class TestStatusPage(UptimeKumaTestCase):
         incident_expected = {
             "title": "title 1",
             "content": "content 1",
-            "style": IncidentStyle.DANGER
+            "style": IncidentStyle.DANGER,
         }
         incident = self.api.post_incident(slug, **incident_expected)
         self.assertTrue(type(incident["style"]) == IncidentStyle)
@@ -96,5 +92,5 @@ class TestStatusPage(UptimeKumaTestCase):
             self.api.delete_status_page("slug42")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

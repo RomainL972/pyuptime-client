@@ -52,5 +52,5 @@ class Test2FA(UptimeKumaTestCase):
         self.assertEqual(r["msg"], "2FA Disabled.")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

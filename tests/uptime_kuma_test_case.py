@@ -106,45 +106,32 @@ class UptimeKumaTestCase(unittest.TestCase):
 
     def add_monitor(self, name="monitor 1"):
         r = self.api.add_monitor(
-            type=MonitorType.HTTP,
-            name=name,
-            url="http://127.0.0.1"
+            type=MonitorType.HTTP, name=name, url="http://127.0.0.1"
         )
         monitor_id = r["monitorID"]
         return monitor_id
 
     def add_tag(self):
-        r = self.api.add_tag(
-            name="tag 1",
-            color="#ffffff"
-        )
+        r = self.api.add_tag(name="tag 1", color="#ffffff")
         tag_id = r["id"]
         return tag_id
 
     def add_notification(self):
         r = self.api.add_notification(
-            name="notification 1",
-            type="PushByTechulus",
-            pushAPIKey="123456789"
+            name="notification 1", type="PushByTechulus", pushAPIKey="123456789"
         )
         notification_id = r["id"]
         return notification_id
 
     def add_proxy(self):
         r = self.api.add_proxy(
-            protocol="http",
-            host="127.0.0.1",
-            port=8080,
-            active=True
+            protocol="http", host="127.0.0.1", port=8080, active=True
         )
         proxy_id = r["id"]
         return proxy_id
 
     def add_docker_host(self):
-        r = self.api.add_docker_host(
-            name="docker host 1",
-            dockerType=DockerType.SOCKET
-        )
+        r = self.api.add_docker_host(name="docker host 1", dockerType=DockerType.SOCKET)
         docker_host_id = r["id"]
         return docker_host_id
 

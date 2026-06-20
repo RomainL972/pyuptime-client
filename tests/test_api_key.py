@@ -9,11 +9,7 @@ class TestApiKey(UptimeKumaTestCase):
         # get empty list to make sure that future accesses will also work
         self.api.get_api_keys()
 
-        expected = {
-            "name": "name 1",
-            "expires": "2023-03-30 12:20:00",
-            "active": True
-        }
+        expected = {"name": "name 1", "expires": "2023-03-30 12:20:00", "active": True}
 
         # add api key
         r = self.api.add_api_key(**expected)
@@ -55,5 +51,5 @@ class TestApiKey(UptimeKumaTestCase):
             self.api.delete_api_key(42)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

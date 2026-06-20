@@ -12,5 +12,5 @@ class TestDatabase(UptimeKumaTestCase):
         self.api.shrink_database()
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

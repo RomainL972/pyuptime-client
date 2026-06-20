@@ -6,10 +6,7 @@ from uptime_kuma_test_case import UptimeKumaTestCase
 
 class TestTag(UptimeKumaTestCase):
     def test_tag(self):
-        expected_tag = {
-            "name": "tag 1",
-            "color": "#ffffff"
-        }
+        expected_tag = {"name": "tag 1", "color": "#ffffff"}
 
         # add tag
         tag = self.api.add_tag(**expected_tag)
@@ -45,5 +42,5 @@ class TestTag(UptimeKumaTestCase):
             self.api.delete_tag(42)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

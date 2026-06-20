@@ -17,7 +17,7 @@ class TestProxy(UptimeKumaTestCase):
             "username": "username",
             "password": "password",
             "active": True,
-            "default": False
+            "default": False,
         }
 
         # add proxy
@@ -56,5 +56,5 @@ class TestProxy(UptimeKumaTestCase):
             self.api.delete_proxy(42)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

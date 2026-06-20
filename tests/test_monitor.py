@@ -22,7 +22,7 @@ class TestMonitor(UptimeKumaTestCase):
             "notificationIDList": [notification_id_1, notification_id_2],
             "upsideDown": False,
             "url": "http://127.0.0.1",
-            "resendInterval": 0
+            "resendInterval": 0,
         }
 
         # add monitor
@@ -80,9 +80,7 @@ class TestMonitor(UptimeKumaTestCase):
         monitor = self.api.get_monitor(monitor_id)
         self.compare(monitor, expected_monitor)
 
-        expected_monitor.update({
-            "name": "monitor 2"
-        })
+        expected_monitor.update({"name": "monitor 2"})
         r = self.api.edit_monitor(monitor_id, **expected_monitor)
         self.assertEqual(r["msg"], "Saved.")
         monitor = self.api.get_monitor(monitor_id)
@@ -108,7 +106,7 @@ class TestMonitor(UptimeKumaTestCase):
             "method": "GET",
             "body": json_data,
             "headers": json_data,
-            "authMethod": AuthMethod.NONE
+            "authMethod": AuthMethod.NONE,
         }
         self.do_test_monitor_type(expected_monitor)
 
@@ -150,7 +148,7 @@ class TestMonitor(UptimeKumaTestCase):
             "type": MonitorType.PORT,
             "name": "monitor 1",
             "hostname": "127.0.0.1",
-            "port": 8888
+            "port": 8888,
         }
         self.do_test_monitor_type(expected_monitor)
 
@@ -159,7 +157,7 @@ class TestMonitor(UptimeKumaTestCase):
             "type": MonitorType.PING,
             "name": "monitor 1",
             "hostname": "127.0.0.1",
-            "packetSize": 56
+            "packetSize": 56,
         }
         self.do_test_monitor_type(expected_monitor)
 
@@ -168,7 +166,7 @@ class TestMonitor(UptimeKumaTestCase):
             "type": MonitorType.KEYWORD,
             "name": "monitor 1",
             "url": "http://127.0.0.1",
-            "keyword": "healthy"
+            "keyword": "healthy",
         }
         self.do_test_monitor_type(expected_monitor)
 
@@ -190,7 +188,7 @@ class TestMonitor(UptimeKumaTestCase):
             "hostname": "127.0.0.1",
             "port": 8888,
             "dns_resolve_server": "1.1.1.1",
-            "dns_resolve_type": "A"
+            "dns_resolve_type": "A",
         }
         self.do_test_monitor_type(expected_monitor)
 
@@ -200,15 +198,12 @@ class TestMonitor(UptimeKumaTestCase):
             "type": MonitorType.DOCKER,
             "name": "monitor 1",
             "docker_container": "test",
-            "docker_host": docker_host_id
+            "docker_host": docker_host_id,
         }
         self.do_test_monitor_type(expected_monitor)
 
     def test_monitor_type_push(self):
-        expected_monitor = {
-            "type": MonitorType.PUSH,
-            "name": "monitor 1"
-        }
+        expected_monitor = {"type": MonitorType.PUSH, "name": "monitor 1"}
         monitor = self.do_test_monitor_type(expected_monitor)
 
         # https://github.com/lucasheld/ansible-uptime-kuma/issues/5
@@ -219,7 +214,7 @@ class TestMonitor(UptimeKumaTestCase):
             "type": MonitorType.STEAM,
             "name": "monitor 1",
             "hostname": "127.0.0.1",
-            "port": 8888
+            "port": 8888,
         }
         self.do_test_monitor_type(expected_monitor)
 
@@ -231,7 +226,7 @@ class TestMonitor(UptimeKumaTestCase):
             "name": "monitor 1",
             "hostname": "127.0.0.1",
             "port": 8888,
-            "game": game
+            "game": game,
         }
         self.do_test_monitor_type(expected_monitor)
 
@@ -244,7 +239,7 @@ class TestMonitor(UptimeKumaTestCase):
             "mqttUsername": "mqtt username",
             "mqttPassword": "mqtt password",
             "mqttTopic": "mqtt topic",
-            "mqttSuccessMessage": "mqtt success message"
+            "mqttSuccessMessage": "mqtt success message",
         }
         self.do_test_monitor_type(expected_monitor)
 
@@ -253,8 +248,8 @@ class TestMonitor(UptimeKumaTestCase):
             "type": MonitorType.SQLSERVER,
             "name": "monitor 1",
             "databaseConnectionString": "Server=127.0.0.1,8888;Database=test;User Id=1;Password=secret123;Encrypt=true;"
-                                        "TrustServerCertificate=Yes;Connection Timeout=5",
-            "databaseQuery": "select getdate()"
+            "TrustServerCertificate=Yes;Connection Timeout=5",
+            "databaseQuery": "select getdate()",
         }
         self.do_test_monitor_type(expected_monitor)
 
@@ -263,7 +258,7 @@ class TestMonitor(UptimeKumaTestCase):
             "type": MonitorType.POSTGRES,
             "name": "monitor 1",
             "databaseConnectionString": "postgres://username:password@host:port/database",
-            "databaseQuery": "select getdate()"
+            "databaseQuery": "select getdate()",
         }
         self.do_test_monitor_type(expected_monitor)
 
@@ -272,7 +267,7 @@ class TestMonitor(UptimeKumaTestCase):
             "type": MonitorType.MYSQL,
             "name": "monitor 1",
             "databaseConnectionString": "mysql://username:password@host:port/database",
-            "databaseQuery": "select getdate()"
+            "databaseQuery": "select getdate()",
         }
         self.do_test_monitor_type(expected_monitor)
 
@@ -280,7 +275,7 @@ class TestMonitor(UptimeKumaTestCase):
         expected_monitor = {
             "type": MonitorType.MONGODB,
             "name": "monitor 1",
-            "databaseConnectionString": "mongodb://username:password@host:port/database"
+            "databaseConnectionString": "mongodb://username:password@host:port/database",
         }
         self.do_test_monitor_type(expected_monitor)
 
@@ -292,7 +287,7 @@ class TestMonitor(UptimeKumaTestCase):
             "radiusPassword": "456",
             "radiusSecret": "789",
             "radiusCalledStationId": "1",
-            "radiusCallingStationId": "2"
+            "radiusCallingStationId": "2",
         }
         self.do_test_monitor_type(expected_monitor)
 
@@ -300,7 +295,7 @@ class TestMonitor(UptimeKumaTestCase):
         expected_monitor = {
             "type": MonitorType.REDIS,
             "name": "monitor 1",
-            "databaseConnectionString": "redis://user:password@host:port"
+            "databaseConnectionString": "redis://user:password@host:port",
         }
         self.do_test_monitor_type(expected_monitor)
 
@@ -309,10 +304,7 @@ class TestMonitor(UptimeKumaTestCase):
             self.skipTest("Unsupported in this Uptime Kuma version")
 
         # create monitor group
-        expected_monitor = {
-            "type": MonitorType.GROUP,
-            "name": "monitor 1"
-        }
+        expected_monitor = {"type": MonitorType.GROUP, "name": "monitor 1"}
         group_monitor = self.do_test_monitor_type(expected_monitor)
         group_monitor_id = group_monitor["id"]
 
@@ -320,7 +312,7 @@ class TestMonitor(UptimeKumaTestCase):
         expected_monitor = {
             "type": MonitorType.PUSH,
             "name": "monitor 1",
-            "parent": group_monitor_id
+            "parent": group_monitor_id,
         }
         self.do_test_monitor_type(expected_monitor)
 
@@ -367,7 +359,7 @@ class TestMonitor(UptimeKumaTestCase):
         expected_monitor = {
             "type": MonitorType.TAILSCALE_PING,
             "name": "monitor 1",
-            "hostname": "127.0.0.1"
+            "hostname": "127.0.0.1",
         }
         self.do_test_monitor_type(expected_monitor)
 
@@ -376,5 +368,5 @@ class TestMonitor(UptimeKumaTestCase):
             self.api.delete_monitor(42)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

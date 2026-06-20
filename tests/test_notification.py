@@ -15,11 +15,11 @@ class TestNotification(UptimeKumaTestCase):
             "applyExisting": True,
             "type": NotificationType.TELEGRAM,
             "telegramChatID": "123456789",
-            "telegramBotToken": "987654321"
+            "telegramBotToken": "987654321",
         }
 
         # test notification
-        with self.assertRaisesRegex(UptimeKumaException, r'Not Found'):
+        with self.assertRaisesRegex(UptimeKumaException, r"Not Found"):
             self.api.test_notification(**expected_notification)
 
         # add notification
@@ -64,5 +64,5 @@ class TestNotification(UptimeKumaTestCase):
             self.api.delete_notification(42)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

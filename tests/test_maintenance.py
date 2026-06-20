@@ -12,13 +12,10 @@ class TestMaintenance(UptimeKumaTestCase):
             "strategy": MaintenanceStrategy.SINGLE,
             "active": True,
             "intervalDay": 1,
-            "dateRange": [
-                "2022-12-27 22:36:00",
-                "2022-12-29 22:36:00"
-            ],
+            "dateRange": ["2022-12-27 22:36:00", "2022-12-29 22:36:00"],
             "weekdays": [],
             "daysOfMonth": [],
-            "timezoneOption": "Europe/Berlin"
+            "timezoneOption": "Europe/Berlin",
         }
 
         # add maintenance
@@ -58,9 +55,7 @@ class TestMaintenance(UptimeKumaTestCase):
         monitor_name = "monitor 1"
         monitor_id = self.add_monitor(monitor_name)
         monitors = [
-            {
-                "id": monitor_id
-            },
+            {"id": monitor_id},
         ]
         r = self.api.add_monitor_maintenance(maintenance_id, monitors)
         self.assertEqual(r["msg"], "Added Successfully.")
@@ -73,11 +68,7 @@ class TestMaintenance(UptimeKumaTestCase):
         # add status page maintenance
         status_page_title = "status page 1"
         status_page_id = self.add_status_page(status_page_title)
-        status_pages = [
-            {
-                "id": status_page_id
-            }
-        ]
+        status_pages = [{"id": status_page_id}]
         r = self.api.add_status_page_maintenance(maintenance_id, status_pages)
         self.assertEqual(r["msg"], "Added Successfully.")
 
@@ -99,11 +90,9 @@ class TestMaintenance(UptimeKumaTestCase):
             "strategy": MaintenanceStrategy.MANUAL,
             "active": True,
             "intervalDay": 1,
-            "dateRange": [
-                "2022-12-27 00:00:00"
-            ],
+            "dateRange": ["2022-12-27 00:00:00"],
             "weekdays": [],
-            "daysOfMonth": []
+            "daysOfMonth": [],
         }
         self.do_test_maintenance_strategy(expected_maintenance)
 
@@ -114,12 +103,9 @@ class TestMaintenance(UptimeKumaTestCase):
             "strategy": MaintenanceStrategy.SINGLE,
             "active": True,
             "intervalDay": 1,
-            "dateRange": [
-                "2022-12-27 22:36:00",
-                "2022-12-29 22:36:00"
-            ],
+            "dateRange": ["2022-12-27 22:36:00", "2022-12-29 22:36:00"],
             "weekdays": [],
-            "daysOfMonth": []
+            "daysOfMonth": [],
         }
         self.do_test_maintenance_strategy(expected_maintenance)
 
@@ -130,22 +116,10 @@ class TestMaintenance(UptimeKumaTestCase):
             "strategy": MaintenanceStrategy.RECURRING_INTERVAL,
             "active": True,
             "intervalDay": 1,
-            "dateRange": [
-                "2022-12-27 22:37:00",
-                "2022-12-31 22:37:00"
-            ],
-            "timeRange": [
-                {
-                    "hours": 2,
-                    "minutes": 0
-                },
-                {
-                    "hours": 3,
-                    "minutes": 0
-                }
-            ],
+            "dateRange": ["2022-12-27 22:37:00", "2022-12-31 22:37:00"],
+            "timeRange": [{"hours": 2, "minutes": 0}, {"hours": 3, "minutes": 0}],
             "weekdays": [],
-            "daysOfMonth": []
+            "daysOfMonth": [],
         }
         self.do_test_maintenance_strategy(expected_maintenance)
 
@@ -156,27 +130,10 @@ class TestMaintenance(UptimeKumaTestCase):
             "strategy": MaintenanceStrategy.RECURRING_WEEKDAY,
             "active": True,
             "intervalDay": 1,
-            "dateRange": [
-                "2022-12-27 22:38:00",
-                "2022-12-31 22:38:00"
-            ],
-            "timeRange": [
-                {
-                    "hours": 2,
-                    "minutes": 0
-                },
-                {
-                    "hours": 3,
-                    "minutes": 0
-                }
-            ],
-            "weekdays": [
-                1,
-                3,
-                5,
-                0
-            ],
-            "daysOfMonth": []
+            "dateRange": ["2022-12-27 22:38:00", "2022-12-31 22:38:00"],
+            "timeRange": [{"hours": 2, "minutes": 0}, {"hours": 3, "minutes": 0}],
+            "weekdays": [1, 3, 5, 0],
+            "daysOfMonth": [],
         }
         self.do_test_maintenance_strategy(expected_maintenance)
 
@@ -187,28 +144,10 @@ class TestMaintenance(UptimeKumaTestCase):
             "strategy": MaintenanceStrategy.RECURRING_DAY_OF_MONTH,
             "active": True,
             "intervalDay": 1,
-            "dateRange": [
-                "2022-12-27 22:39:00",
-                "2022-12-31 22:39:00"
-            ],
-            "timeRange": [
-                {
-                    "hours": 2,
-                    "minutes": 0
-                },
-                {
-                    "hours": 3,
-                    "minutes": 0
-                }
-            ],
+            "dateRange": ["2022-12-27 22:39:00", "2022-12-31 22:39:00"],
+            "timeRange": [{"hours": 2, "minutes": 0}, {"hours": 3, "minutes": 0}],
             "weekdays": [],
-            "daysOfMonth": [
-                1,
-                10,
-                20,
-                30,
-                "lastDay1"
-            ]
+            "daysOfMonth": [1, 10, 20, 30, "lastDay1"],
         }
         self.do_test_maintenance_strategy(expected_maintenance)
 
@@ -219,15 +158,12 @@ class TestMaintenance(UptimeKumaTestCase):
             "strategy": MaintenanceStrategy.CRON,
             "active": True,
             "intervalDay": 1,
-            "dateRange": [
-                "2022-12-27 22:37:00",
-                "2022-12-31 22:37:00"
-            ],
+            "dateRange": ["2022-12-27 22:37:00", "2022-12-31 22:37:00"],
             "weekdays": [],
             "daysOfMonth": [],
             "cron": "50 5 * * *",
             "durationMinutes": 120,
-            "timezoneOption": "Europe/Berlin"
+            "timezoneOption": "Europe/Berlin",
         }
         self.do_test_maintenance_strategy(expected_maintenance)
 
@@ -265,5 +201,5 @@ class TestMaintenance(UptimeKumaTestCase):
             self.api.delete_maintenance(42)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

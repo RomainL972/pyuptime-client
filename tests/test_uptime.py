@@ -12,5 +12,5 @@ class TestUptime(UptimeKumaTestCase):
         self.api.uptime()
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

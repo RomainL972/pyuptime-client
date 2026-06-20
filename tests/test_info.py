@@ -21,5 +21,5 @@ class TestInfo(UptimeKumaTestCase):
         self.assertIn("version", info)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

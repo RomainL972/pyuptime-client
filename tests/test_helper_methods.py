@@ -11,5 +11,5 @@ class TestHelperMethods(UptimeKumaTestCase):
         self.assertTrue(type(status) == MonitorStatus)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

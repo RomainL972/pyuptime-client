@@ -18,7 +18,7 @@ class TestSettings(UptimeKumaTestCase):
             "disableAuth": False,
             "trustProxy": False,
             "serverTimezone": "Europe/Berlin",
-            "dnsCache": True
+            "dnsCache": True,
         }
 
         # set settings
@@ -53,12 +53,12 @@ class TestSettings(UptimeKumaTestCase):
             "version": "1.17.1",
             "notificationList": [],
             "monitorList": [],
-            "proxyList": []
+            "proxyList": [],
         }
         data_str = json.dumps(data)
         r = self.api.upload_backup(data_str, "overwrite")
         self.assertEqual(r["msg"], "Backup successfully restored.")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

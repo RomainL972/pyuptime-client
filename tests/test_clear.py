@@ -16,5 +16,5 @@ class TestClear(UptimeKumaTestCase):
         self.api.clear_statistics()
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()
