@@ -1,0 +1,51 @@
+[project]
+name = "pyuptime-client"
+version = "1.2.1"
+description = "A python wrapper for the Uptime Kuma WebSocket API"
+readme = "README.md"
+authors = [
+    { name = "Lucas Held", email = "lucasheld@hotmail.de" },
+    { name = "Romain Lebbadi-Breteau", email = "romain@lebbadi.fr" }
+]
+license = "MIT"
+license-files = ["LICENSE"]
+requires-python = ">=3.14"
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Environment :: Web Environment",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Natural Language :: English",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.7",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3 :: Only",
+    "Topic :: Internet :: WWW/HTTP",
+    "Topic :: Software Development :: Libraries"
+]
+
+dependencies = [
+    "packaging>=26.2",
+    "python-socketio[client]>=5.0.0",
+]
+
+[dependency-groups]
+dev = [
+    "beautifulsoup4==4.12.2",
+    "jinja2==3.1.2",
+    "pyotp==2.8.0",
+    "sphinx==5.3.0",
+]
+
+[build-system]
+requires = ["uv_build>=0.11.7,<0.12.0"]
+build-backend = "uv_build"
+
+[tool.uv.build-backend]
+module-name = "uptime_kuma_api"
+module-root = ""
